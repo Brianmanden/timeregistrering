@@ -1,43 +1,66 @@
 <!DOCTYPE html>
 <html lang="da">
 	<head>
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<title>Timeregistrering</title>
-		<!-- Latest compiled and minified CSS -->
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-		<!-- Optional theme -->
+		<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
-		<!-- Custom styles for this template -->
-		<link href="./styles/signin.css" rel="stylesheet">
 	</head>
 	<body>
 		<div class="container">
-			<form id="dieselForm" class="form-signin">
+			<form id="timeForm" class="form-signin">
 				<h2 class="form-signin-heading">Timeregistrering</h2>
 				<div class="form-group formData">
-					<label for="price">Timer</label>
-					<div class="input-group">
-						<input type="number" class="form-control" id="price" name="price" placeholder="0.00" step="0.01">
+					<label for="startHours">Starttid</label>
+					<div class="input-group" data-placement="bottom" data-align="top" data-autoclose="true" readonly="readonly">	
+						<input type="text" name="signInTime" class="form-control" list="signIns" />
+						<datalist id="signIns">
+							<option>7:00</option>
+							<option>7:15</option>
+							<option>7:30</option>
+							<option>7:45</option>
+							<option>8:00</option>
+							<option>8:15</option>
+							<option>8:30</option>
+							<option>8:45</option>
+							<option>9:00</option>
+						</datalist>
 					</div>
-					<label for="amount">Minutter</label>
-					<div class="input-group">
-						<input type="number" class="form-control" id="amount" name="amount" placeholder="0.00" step="0.01">
+					<label for="workHours">Arbejdstid</label>
+					<div class="input-group" data-placement="bottom" data-align="top" data-autoclose="true">
+						<input type="text" name="hours" class="form-control" list="workHours" />
+						<datalist id="workHours">
+							<option>7.00</option>
+							<option>7.25</option>
+							<option>7.50</option>
+							<option>7.75</option>
+							<option>8.00</option>
+							<option>8.25</option>
+							<option>8.50</option>
+							<option>8.75</option>
+							<option>9.00</option>
+						</datalist>
 					</div>
-					<div id="slidePad"></div>
-					<textarea id="output"></textarea>
+					<label for="endHours">Sluttid</label>
+					<div class="input-group" data-placement="bottom" data-align="top" data-autoclose="true">
+						<input type="text" name="signOutTime" class="form-control" list="signOuts" />
+						<datalist id="signOuts">
+							<option>15:30</option>
+							<option>15:45</option>
+							<option>16:00</option>
+							<option>16:15</option>
+							<option>16:30</option>
+							<option>16:45</option>
+							<option>17:15</option>
+							<option>17:30</option>
+						</datalist>
+					</div>
 				</div>
 				<button id="submitBtn" class="btn btn-lg btn-primary btn-block">Indsend data</button>
-				<div class="form-group">
-					<label for="average">Gennemsnit</label>
-					<div class="input-group">
-						
-						<input type="number" class="form-control" id="average" name="average" placeholder="0.0000" step="0.0001">
-					</div>
-				</div>
-				<button id="avgBtn" class="btn btn-lg btn-primary btn-block">Beregn</button>
 			</form>
 		</div>
+
 		<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 		<!-- Latest compiled and minified JavaScript -->
