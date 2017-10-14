@@ -1,6 +1,29 @@
 //Variable to hold request
 var request;
 
+//var signInTime = $('input[name=signInTime]');
+const signInElem = document.querySelector('input[name=signInTime]');
+const hours = document.querySelector('input[name=hours]');
+const signOutElem = document.querySelector('input[name=signOutTime]');
+
+function convertToHours(inputVal){
+    const hourParts = inputVal.toString().split(":");
+    return Number(hourParts[0]) + Number(hourParts[1]) / 60;
+}
+
+function convertToTime(inputVal){
+    const timeParts = inputVal.toString().split(".");
+    return timeParts[0] + ":"+ ("00" + timeParts[1] * 0.6).slice(-2);
+}
+
+hours.onblur = () => {
+    signOutElem.value = convertToTime(Number(Number(convertToHours(signInElem.value)) + Number(hours.value)).toFixed(2));
+}
+
+signOutElem.onblur = () => {
+    hours.value = convertToHours(signOutElem.value) - convertToHours(signInElem.value);
+};
+
 //Bind to the submit event of our form
 $("#timeForm").submit(function(event){
 	event.preventDefault();
